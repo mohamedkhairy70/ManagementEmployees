@@ -1,0 +1,59 @@
+
+<h2>Employee Taxs</h2>
+<h3>Id: {{IdEdit}}</h3>
+<form [formGroup]="formItem" (ngSubmit)="addItem()" >
+
+    <div class="row">
+        <div class="col">
+            <div class="form-group">
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">
+                            <i class="fas fa-dollar-sign"
+                                [class.green-icon]="this.formItem.get('tax')?.valid"
+                                [class.red-icon]="!this.formItem.get('tax')?.valid"
+                            >
+                            </i>
+                        </div>
+                    </div>
+                    <input type="number" class="form-control"
+                    placeholder="tax" formControlName="tax">
+                </div>
+            </div>
+        </div>
+      </div>
+    <div class="form-group">
+        <button class="btn btn-success btn-lg btn-block"
+        [disabled]="formItem.invalid" type="submit">
+            <i class="fas fa-save"></i>
+            Add to List
+        </button>
+    </div>
+</form>
+
+<table class="table" >
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Tax</td>
+            <td>NetSalary</td>
+            <td>Option</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of employeeTax">
+            <td>{{ item.ID }}</td>
+            <td>{{ item.Tax }}</td>
+            <td>{{ item.NetSalary }}</td>
+            <td>
+                <i class="far fa-edit falg text-info" 
+                style="cursor: pointer;"
+                (click)="editItem(item)"></i>
+                ||
+                <i class="far fa-trash-alt falg text-danger" 
+                style="cursor: pointer;"
+                (click)="removeItem(item)"></i>
+            </td>
+        </tr>
+    </tbody>
+</table>

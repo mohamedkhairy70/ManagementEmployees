@@ -1,0 +1,46 @@
+<a class="btn btn-success btn-block"
+[routerLink]="['/Employee','0']">
+            <i class="fas fa-save"></i>
+            Add New Employee
+</a>
+        <br>
+<table class="table">
+    <thead>
+        <tr>
+            <td>Id</td>
+            <td>Employee name</td>
+            <td>Mobile</td>
+            <td>Email</td>
+            <td>Salary</td>
+            <!-- <td>NetSalary</td> -->
+            <td>Option</td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of employeeservice.list">
+            <td>{{ item?.ID }}</td>
+            <td>{{ item?.Name }}</td>
+            <td>{{ item?.Mobile }}</td>
+            <td>{{ item?.Email }}</td>
+            <td>{{ item?.Salary }}</td>
+            <!-- <td>{{ item?.NetSalary }}</td> -->
+            <td>
+                <i class="far fa-info-circle falg text-info" 
+                style="cursor: pointer;"
+                [routerLink]="['/Employees',item?.ID]"
+                >
+                </i>
+                ||
+                <i class="far fa-edit falg text-info" 
+                style="cursor: pointer;"
+                [routerLink]="['/Employee',item?.ID]"
+                ></i>
+                ||
+                <i class="far fa-trash-alt falg text-danger" 
+                style="cursor: pointer;"
+                (click)="delete(item?.ID)"
+                ></i>
+            </td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,49 @@
+<div class="card">
+    <div class="card-header">
+        {{employee?.Name}}
+    </div>
+    <div class="card-body">
+        <h2>Employee</h2>
+        <table class="table">
+            <tr><td>ID</td><td>{{employee.ID}}</td> </tr>
+            <tr><td>Mobile</td><td>{{employee.Mobile}}</td></tr>
+            <tr><td>Email</td><td>{{employee.Email}}</td></tr>
+            <tr><td>Salary</td><td>{{employee.Salary}}</td></tr>
+        </table>
+        <h2>Employee Taxs</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <td>Id</td>
+                    <td>Tax</td>
+                    <td>Option</td>
+                    <td>NetSalary</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let item of employee.EmployeeTaxs">
+                    <td>{{ item?.ID }}</td>
+                    <td>{{ item?.Tax }}</td>
+                    <td>{{ item?.NetSalary }}</td>
+                    <td>
+                        <i class="far fa-edit falg text-info" 
+                        style="cursor: pointer;"
+                        ></i>
+                        ||
+                        <i class="far fa-trash-alt falg text-danger" 
+                        style="cursor: pointer;"
+                        ></i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="card-footer">
+        <button class="btn btn-outlne-secondary"
+                style="width:80px;"
+                (click)='onBack()'>
+            <i class="fa fa-chevron-left"></i>
+            Back
+        </button>
+    </div>
+</div>
